@@ -2,15 +2,19 @@
 
 This note refers to [the official collections](https://github.com/tc39/proposals/blob/master/finished-proposals.md).
 
-### 1. Array.prototype.includes
+## ECMAScript 2016
+
+### 1. `Array.prototype.includes`
 
 ```typescript
 Array.prototype.includes = function (searchElement: T, fromIndex?: number): boolean;
 ```
 
 > Author: Domenic Denicola
-
+>
 > Expected Publication Year: 2016
+>
+> https://github.com/tc39/Array.prototype.includes
 
 Sometimes we may need to detect whether an array has am expected element:
 
@@ -34,11 +38,13 @@ console.log([1, 2, +0].includes(-0)); /** => true */
 console.log([1, 2, 3].includes(1, 1)); /** => false */
 ```
 
-### 2. Exponentiation operator
+### 2. Exponentiation operator (`**`)
 
 > Author: Rick Waldron
-
+>
 > Expected Publication Year: 2016
+>
+> https://github.com/tc39/proposal-exponentiation-operator
 
 To support exponentiation with `**` notation.
 
@@ -48,11 +54,15 @@ console.log(2 ** 2); /** => 4 */
 console.log(2 ** (1 / 2)); /** => 1.4142135623730951 */
 ```
 
-### 3. Object.values / Object.entries
+## ECMAScript 2017
+
+### 3. `Object.{values, entries}`
 
 > Author: Jordan Harband
-
+>
 > Expected Publication Year: 2017
+>
+> https://github.com/tc39/proposal-object-values-entries
 
 As for we can get all keys of an JavaScript object through `Object.keys`, why can't we use some supported methods to export all values or even key-value pairs of such an object?
 
@@ -63,7 +73,7 @@ console.log(Object.values({a: 1, b: 2})); /** => [1, 2] */
 console.log(Object.entries({a: 1, b: 2})); /** => [['a', 1], ['b', 2]] */
 ```
 
-### 4. String.prototype.padStart / String.prototype.padEnd
+### 4. `String.prototype.{padStart, padEnd}`
 
 ```typescript
 String.prototype.padStart = function (maxLength: number, fillString?: string): string;
@@ -71,8 +81,10 @@ String.prototype.padEnd = function (maxLength: number, fillString?: string): str
 ```
 
 > Author: Jordan Harband
-
+>
 > Expected Publication Year: 2017
+>
+> https://github.com/tc39/proposal-string-pad-start-end
 
 To support padding a string with given minimal length of such a string.
 
@@ -83,7 +95,7 @@ console.log('abc'.padEnd(1)); /** => "abc" */
 console.log('abc'.padStart(4, '-').padEnd(5, '-')); /** => "-abc-" */
 ```
 
-### 5. Object.getOwnPropertyDescriptors
+### 5. `Object.getOwnPropertyDescriptors`
 
 ```typescript
 Object.getOwnPropertyDescriptors = function <T>(o: T): {
@@ -92,8 +104,10 @@ Object.getOwnPropertyDescriptors = function <T>(o: T): {
 ```
 
 > Author: Jordan Harband, Andrea Giammarchi
-
+>
 > Expected Publication Year: 2017
+>
+> https://github.com/tc39/proposal-object-getownpropertydescriptors
 
 Since we can get descriptor from an object with given key, why can't we get all descriptors of an object with nature methods without looping each time?
 
@@ -133,8 +147,10 @@ console.log(mix({a: 1}).with({b: 2}, {c: 3})); /** => {a: 1, b: 2, c: 3} */
 ### 6. Trailing commas in function parameters lists
 
 > Author: Jeff Morrison
-
+>
 > Expected Publication Year: 2017
+>
+> https://github.com/tc39/proposal-trailing-function-commas
 
 Sometimes it is common to toggle function parameters with new lines for prettier format:
 
@@ -177,8 +193,10 @@ function test(
 More detailed for asynchronous programming at [here](../../async_programming/async_programming.md).
 
 > Author: Brian Terlson
-
+>
 > Expected Publication Year: 2017
+>
+> https://github.com/tc39/ecmascript-asyncawait
 
 ```js
 const tasks = [
@@ -200,14 +218,20 @@ const tasks = [
 ### 8. Shared Memory and Atomics
 
 > Author: Lars T Hansen
-
+>
 > Expected Publication Year: 2017
+>
+> https://github.com/tc39/ecmascript_sharedmem
+
+## ECMAScript 2018
 
 ### 9. Lifting template literal restriction
 
 > Author: Tim Disney
-
+>
 > Expected Publication Year: 2018
+>
+> https://github.com/tc39/proposal-template-literal-revision
 
 When it comes to template literal, there is a way we can handle string template with tagged methods like the following snippet:
 
@@ -244,8 +268,10 @@ tag`\unicode`; /** works fine */
 ### 10. `s` (`dotAll`) flag for regular expressions
 
 > Author: Mathias Bynens
-
+>
 > Expected Publication Year: 2018
+>
+> https://github.com/tc39/proposal-regexp-dotall-flag
 
 In JavaScript regular expressions, the dot notation `.` does not match all like line terminator characters:
 
@@ -290,8 +316,10 @@ console.log(/^.$/m.test(`
 ### 11. Named capturing groups in regular expressions
 
 > Author: Gorkem Yakin, Daniel Ehrenberg
-
+>
 > Expected Publication Year: 2018
+>
+> https://github.com/tc39/proposal-regexp-named-groups
 
 If you are familiar with regular expressions in JavaScript, you should know how to use capturing groups for matching and storing what we need. However, the order of multiple groups is always confusing especially when we have a sufficient complicated expressions. After this proposal, we can name groups without knowing the order any more.
 
@@ -334,8 +362,10 @@ When it comes to references, the `\k<name>` syntax may have compatible problems 
 ### 12. Rest / Spread Properties
 
 > Author: Sebastian Markbåge
-
+>
 > Expected Publication Year: 2018
+>
+> https://github.com/tc39/proposal-object-rest-spread
 
 ECMAScript 2015 (ES6) has introduced **rest** for array destructuring assignment and **spread** for array literals.
 
@@ -354,3 +384,440 @@ console.log(c); /** => {x: 3, y: 4} */
 
 console.log({a: 1, b: 2, ...{x: 3, y: 4}}); /** => {a: 1, b: 2, x: 3, y: 4} */
 ```
+
+### 13. RegExp Lookbehind Assertions (`(?<=)`, `(?<!)`)
+
+> Author: Gorkem Yakin, Nozomu Katō, Daniel Ehrenberg
+>
+> Expected Publication Year: 2018
+>
+> https://github.com/tc39/proposal-regexp-lookbehind
+
+With lookahead assertions (`(?!...)`) supported before in JavaScript, we can easily find a word which is not a specified one as mentioned in [the note](../../regular/words_lines_special/words_lines_special.md#find-all-except-a-specific-word). However, the language does not support lookbehind assertions to do this in a reversed way as [another note](../../regular/words_lines_special/words_lines_special.md#find-any-word-not-preceded-by-a-specific-word) said. Since that proposal, we can also do this easily by using `(?<=...)`.
+
+To clearly know the meaning of assertions in JavaScript regular expressions, I have refereed to the example of MDN:
+
+1. Lookahead assertions (`/x(?=y)/`): Matches "x" only if "x" is followed by "y".
+2. Negative lookahead assertions (`/x(?!y)/`): Matches "x" only if "x" is not followed by "y".
+3. Lookbehind assertions (`/(?<=y)x/`): Matches "x" only if "x" is preceded by "y".
+4. Negative lookbehind assertions (`/(?<!y)x/`): Matches "x" only if "x" is not preceded by "y".
+
+### 14. RegExp Unicode Property Escapes
+
+> Author: Mathias Bynens
+>
+> Expected Publication Year: 2018
+>
+> https://github.com/tc39/proposal-regexp-unicode-property-escapes
+
+With this proposal, developers can access the set of unicode symbols, that are used exclusively in some specified script, in a regular expression by setting with a Unicode Property `\p{...}` and `\P{...}` with `u` flags:
+
+```js
+/\p{UnicodePropertyName=UnicodePropertyValue}/u
+```
+
+The aliases of **UnicodePropertyName** and **UnicodePropertyValue** has been defined in [`PropertyAliases.txt`](http://unicode.org/Public/UNIDATA/PropertyAliases.txt) and [`PropertyValueAliases.txt`](http://unicode.org/Public/UNIDATA/PropertyValueAliases.txt). For example, if we want to match some Greek characters:
+
+```js
+/\p{Script=Greek}/u.test('π'); /** => true */
+```
+
+For binary options, the following syntax is available like `Alphabetic`, `Math`, or `Uppercase`:
+
+```js
+/\p{LoneUnicodePropertyNameOrValue}/u
+```
+
+This syntax may also be used as a shorthand for `General_Category` values, e.g. `\p{Letter}` instead of `\p{General_Category=Letter}`.
+
+### 15. `Promise.prototype.finally`
+
+> Author: Jordan Harband
+>
+> Expected Publication Year: 2018
+>
+> https://github.com/tc39/proposal-promise-finally
+
+With `Promise.prototype.finally`, we do not need to use `Promise.prototype.then(func, func)` to handle fulfilled or rejected state at the same time anymore.
+
+In addition, `finally` won't change the result of a promise chain:
+
+```js
+Promise.resolve(1).then(() => {}, () => {}); /** => resolve undefined */
+Promise.resolve(1).finally(() => {}); /** => still resolve 1 */
+```
+
+### 16. Asynchronous Iteration
+
+> Author: Domenic Denicola
+>
+> Expected Publication Year: 2018
+>
+> https://github.com/tc39/proposal-async-iteration
+
+Since we can use async / await as [the proposal](#7-async--await) said, we also need a feature to support asynchronous iteration so that developers can iterate some promises, especially when the next promise replies on the previous one. The proposal has introduced three types of iterations: the **AsyncIterator** interface, an asynchronous iteration statement (`for-await-of`), and async generator functions.
+
+1. the **AsyncIterator** interface
+
+    An async iterator is much like an iterator, except that its next() method returns a promise for a `{value, done}` pair.
+
+    ```js
+    const {value, done} = syncIterator.next();
+
+    asyncIterator.next().then(({value, done}) => { /** ... */ });
+    ```
+
+    To create a synchronous iterator which can be used by `for...of`:
+
+    ```js
+    const iterator = {
+        [Symbol.iterator]: function* () {
+        	yield 1;
+        	yield 2;
+        	yield 3;
+        },
+    };
+
+    console.log([...iterator]); /** => 1 2 3 */
+    for (const val of iterator) { console.log(val); } /** => 1, 2, 3 */
+    ```
+
+    To create an asynchronous iterator which can be used by `for await...of`:
+
+    ```js
+    const asyncIterator = {
+        [Symbol.asyncIterator]: function* () {
+        	yield 1;
+        	yield 2;
+        	yield 3;
+        },
+    };
+
+    (async () => {
+        for await (const val of asyncIterator) { console.log(val); } /** => 1, 2, 3 */ 
+    })();
+    ```
+
+2. An asynchronous iteration statement (`for await...of`)
+
+    The proposal introduces that we can iterate some async function in sequential like that:
+
+    ```js
+    (async () => {
+        for await (const task of tasks()) { console.log(task); }
+    });
+    ```
+
+    *Note that: statements are only allowed within async function and async generator functions.*
+
+3. Async generator functions
+
+    Async generator functions are similar to generator functions, with the following differences:
+
+    * When called, async generator functions return an object, an *async generator* whose methods (`next`, `throw`, and `return`) return promises for `{ value, done }`, instead of directly returning `{ value, done }`. This automatically makes the returned async generator objects *async iterators*.
+    * `await` expressions and `for`-`await`-`of` statements are allowed.
+    * The behavior of `yield*` is modified to support delegation to async iterables.
+
+    For example:
+
+    ```js
+    async function* readLines(path) {
+	    let file = await fileOpen(path);
+    
+	    try {
+	    	while (!file.EOF) {
+	    		yield await file.readLine();
+	    	}
+	    } finally {
+	    	await file.close();
+	    }
+    } 
+    ```
+
+## ECMAScript 2019
+
+### 17. Optional `catch` binding
+
+> Author: Michael Ficarra
+>
+> Expected Publication Year: 2019
+>
+> https://github.com/tc39/proposal-optional-catch-binding
+
+Before this proposal, you cannot omit the parameter and have to define the variable even if you want to ignore it:
+
+```js
+try { /** do something */ } catch (ignore) {}
+```
+
+After this proposal, you can definitely remove this unused pattern:
+
+```js
+try { /** do something */ } catch {}
+```
+
+### 18. `JSON` superset
+
+> Author: Richard Gibson
+>
+> Expected Publication Year: 2019
+>
+> https://github.com/tc39/proposal-json-superset
+
+A proposal to extend [ECMA-262](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf) syntax into a superset of JSON.
+
+### 19. `Symbol.prototype.description`
+
+> Author: Michael Ficarra
+>
+> Expected Publication Year: 2019
+>
+> https://github.com/tc39/proposal-Symbol-description
+
+A read-only property to return the optional description of a `Symbol` object:
+
+```js
+console.log(Symbol().description); /** => undefined */
+console.log(Symbol('').description); /** => "" */
+console.log(Symbol('desc').description); /** => "desc" */
+console.log(Symbol('desc').toString()); /** => "Symbol(desc)" */
+
+/** a well-known symbol */
+console.log(Symbol.iterator.description); /** => "Symbol.iterator" */
+/** global symbols */
+console.log(Symbol.for('foo').description); /** => "foo" */
+```
+
+### 20. `Function.prototype.toString` revision
+
+> Author: Michael Ficarra
+>
+> Expected Publication Year: 2019
+>
+> https://tc39.es/Function-prototype-toString-revision/
+
+A proposal of a revision at `Function.prototype.toString`:
+
+- ensure that the string's parse contains the same function body and parameter list as the original
+- for functions defined using ECMAScript code, `toString` must return source text slice from beginning of first token to end of last token matched by the appropriate grammar production
+- for built-in function objects and [bound function](https://tc39.github.io/ecma262/#sec-bound-function-exotic-objects) exotic objects, `toString` must not return anything other than [NativeFunction](https://tc39.es/Function-prototype-toString-revision/#prod-NativeFunction)
+- for callable objects which were not defined using ECMAScript code, `toString` must return [NativeFunction](https://tc39.es/Function-prototype-toString-revision/#prod-NativeFunction)
+- for functions created dynamically (through the Function and GeneratorFunction constructors), `toString` must synthesise a source text
+- for all other objects, `toString` must throw a TypeError exception
+- implementations must not be required to retain source text for all functions defined using ECMAScript code
+
+### 21. `Object.fromEntries`
+
+> Author: Darien Maillet Valentine
+>
+> Expected Publication Year: 2019
+>
+> https://github.com/tc39/proposal-object-from-entries
+
+Aims to do reversal operation of `Object.entries`, like [`_.formPairs`](https://lodash.com/docs/4.17.4#fromPairs) in Lodash:
+
+```js
+console.log(Object.entries({a: 1, b: 2})); /** => [["a", 1], ["b", 2]] */
+console.log(Object.fromEntries([['a', 1], ['b', 2]])); /** => {a: 1, b: 2} */
+```
+
+### 22. Well-formed `JSON.stringify`
+
+> Author: Richard Gibson
+>
+> Expected Publication Year: 2019
+>
+> https://github.com/tc39/proposal-well-formed-stringify
+
+Aims to prevent `JSON.stringify` from returning ill-formed Unicode strings:
+
+```js
+console.log(JSON.stringify('\uD834\uDF06')); /** => "𝌆" */
+console.log(JSON.stringify('\uDF06\uD834')); /** => "\\udf06\\ud834" rather than "��" */
+```
+
+### 23. `String.prototype.{trimStart, trimEnd, trimLeft, trimRight}`
+
+> Author: Sebastian Markbåge
+>
+> Expected Publication Year: 2019
+>
+> https://github.com/tc39/proposal-string-left-right-trim
+
+A proposal to support trim in one side of a string. `trimLeft` and `trimRight` are just aliases of `trimStart` and `trimEnd`.
+
+```js
+console.log(' foo '.trimLeft()); /** => "foo " */
+console.log(' foo '.trimRight()); /** => " foo" */
+console.log(' bar '.trimStart()); /** => "bar " */
+console.log(' bar '.trimEnd()); /** => " bar" */
+```
+
+### 24. `Array.prototype.{flat, flatMap}`
+
+> Author: Brian Terlson, Michael Ficarra, Mathias Bynens
+>
+> Expected Publication Year: 2019
+>
+> https://github.com/tc39/proposal-flatMap
+
+With `Array.prototype.flat`, developers can operate an array by concatenating all child arrays into it recursively up to the specified depth. For example:
+
+```js
+console.log([1, [2, [3]], 4].flat()); /** => [1, 2, [3], 4], specify depth as 1 by default */
+console.log([1, [2, [3]], 4].flat(1)); /** => [1, 2, [3], 4] */
+console.log([1, [2, [3]], 4].flat(2)); /** => [1, 2, 3, 4] */
+```
+
+With `Array.prototype.flatMap`, we can flat each child item via 1 depth of an array after map it:
+
+```js
+console.log([{a: 1}, {a : [2, [3]]} , {a:4 }].flatMap(({a}) => a)); /** => [1, 2, [3], 4] */
+```
+
+## ECMAScript 2020
+
+### 25. `String.prototype.matchAll`
+
+> Author: Jordan Harband
+>
+> Expected Publication Year: 2020
+>
+> https://github.com/tc39/String.prototype.matchAll
+
+With this proposal, we don't need to use a `RegExp` object to execute matching some patterns within a string anymore. For Example, if we want to match all `test` keyword within a sentence, we may implement the requirement like this before:
+
+```js
+const sentence = 'This is a test case where we can test a case of matching several patterns.';
+const regex = /test/g;
+const matches = [];
+
+let match;
+while (match = regex.exec(sentence)) {
+	matches.push(match);
+}
+
+console.log(matches); /** => [["test", index: 10, input: "xxx", groups: undefined], ["test", index: 33, input: "xxx", groups: undefined]] */
+```
+
+After that, we can use `String.prototype.matchAll` to do so:
+
+```js
+const matches = [...'This is a test case where we can test a case of matching several patterns.'.matchAll(/test/g)];
+
+console.log(matches); /** => [["test", index: 10, input: "xxx", groups: undefined], ["test", index: 33, input: "xxx", groups: undefined]] */
+```
+
+*Notice that: `String.prototype.matchAll` will return an iterator, named as `RegExpStringIterator`.*
+
+### 26. `import()`
+
+> Author: Domenic Denicola
+>
+> Expected Publication Year: 2020
+>
+> https://github.com/tc39/proposal-dynamic-import
+
+As we know, `import` cannot be called dynamically like this before:
+
+```js
+if (es3) { /** Syntax Error: statement expected */ 
+	import 'core-js/shim';
+}
+```
+
+Since this proposal, we can use `import` statement like calling a function, which will return a promise:
+
+```js
+if (es3) {
+	import('core-js/shim').then(module => { /** do something with the module */ });
+}
+```
+
+### 27. BigInt
+
+`BigInt` is a new primitive which provides a way to represent whole numbers larger than 2<sup>53</sup>, which is the largest number Javascript can reliably represent with the `Number` primitive.
+
+```js
+console.log(Number.MAX_SAFE_INTEGER); /** => 9007199254740991, this is 1 less than 2^53 */
+console.log(Number.MAX_SAFE_INTEGER + 1); /** => 9007199254740992, OK */
+console.log(Number.MAX_SAFE_INTEGER + 2); /** => 9007199254740992, same above */
+console.log(Number.MAX_SAFE_INTEGER + 3); /** => 9007199254740994, OK again? */
+console.log(Number.MAX_SAFE_INTEGER + 4); /** => 9007199254740994, Emmmmm */
+```
+
+There is some syntax you may need to know when using `BigInt`:
+
+```js
+const bigInt = 9007199254740991n;
+const bigInt1 = BigInt(9007199254740991);
+const bigInt2 = BigInt('9007199254740991');
+```
+
+We can apply arithmetic operations as well as power (`**`) and mod (`%`) operations on `BitInt`, but should with `BitInt` as right value at the same time:
+
+```js
+console.log(BigInt(Number.MAX_SAFE_INTEGER) + 1n); /** => 9007199254740992n, OK */
+console.log(BigInt(Number.MAX_SAFE_INTEGER) + 1); /** => Error: Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions */
+```
+
+When it comes to division (`/`), what you may need to know is that what you get should be rounded as it is an integer to some extent.
+
+```js
+console.log(4n / 2n); /** => 2n */
+console.log(3n / 2n); /** => 1n, but not 1.5n */
+```
+
+When compare `BitInt` with `Number`, it equals when not strictly:
+
+```js
+console.log(1n == 1); /** => true */
+console.log(1n === 1); /** => false */
+
+console.log(1n < 2); /** => true */
+console.log(2n > 2); /** => false */
+console.log(2 > 2); /** => false */
+console.log(2 > 2n); /** => false */
+console.log(2 >= 2n); /** => true */
+```
+
+Also, `0n` is same as `0`, which will be treated as `false` in conditions:
+
+```js
+console.log(0n || 'else'); /** => "else" */
+```
+
+Some situations of converting between `BitInt` and `Number` should be noticed:
+
+1. Initializing:
+
+    ```js
+    BigInt(1.5); /** => RangeError: The number 1.5 is not a safe integer and thus cannot be converted to a BigInt */
+    BigInt('1.5'); /** => SyntaxError: Cannot convert 1.5 to a BigInt */ 
+    ```
+
+2. Operating:
+
+    ```js
+    Math.round(1n); /** => TypeError: Cannot convert a BigInt value to a number */
+    Math.max(1n, 10n); /** => TypeError: Cannot convert a BigInt value to a number */
+
+    1n | 0; /** TypeError: Cannot mix BigInt and other types, use explicit conversions */ 
+    ```
+
+3. Parsing:
+
+    ```js
+    parseFloat(1234n); /** => 1234 */
+    parseInt(10n); /** => 10 */ 
+
+    parseInt(900719925474099267n); /** => 900719925474099300, lose precision */
+    ```
+
+4. Serializing:
+
+    ```js
+    JSON.stringify({a: 10n}); /** => TypeError: Do not know how to serialize a BigInt */ 
+    ```
+
+For more advanced usages, please visit [here](https://github.com/tc39/proposal-bigint/blob/master/ADVANCED.md).
